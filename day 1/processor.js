@@ -18,17 +18,18 @@ function findFloor(input) {
     var floor = 0;
     var characterCount = 0;
     var found = false;
+	var basementCharacter;
     for (var i = 0, len = input.length; i < len; i++) {
         characterCount++;
         if (input[i] == "(") {
             floor++;
         }
-        if (input[i] == ")") {
+        else{
             floor--;
         }
         if (floor < 0 && !found) {
             found = !found; //flag so it only runs once
-            var basementCharacter = characterCount;
+            basementCharacter = characterCount;
         }
     }
     return {
