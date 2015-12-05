@@ -1,0 +1,11 @@
+{
+  "name": "day5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "processor.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
