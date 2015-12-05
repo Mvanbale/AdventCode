@@ -17,14 +17,14 @@ var santaCoords = {
     y: 0
 }
 
-// Read the file and print its contents.
+// Read the file and split the content by character
 var fs = require('fs'),
     filename = process.argv[2];
 fs.readFile(filename, 'utf8', function (err, data) {
     if (err) throw err;
     var splitData = data.split('')
 
-    //we process the instructions here here
+    //we process the instructions here
     splitData.forEach(function (element) {
         changeActor();//here we change from robot to santa and back again.
         switch (element) {
