@@ -12,14 +12,14 @@ module.exports = function (data, done) {
 			var variables = splitStatement[0].split(result);
 			var targetVariable = splitStatement[1];
 			
-			console.log(result, "___",variables[0],"| WITH |",variables[1],"| ON {"+targetVariable+"}");
-			var command ={operator:result, var1:variables[0], var2:variables[1], target:targetVariable};
+			//console.log(result, "___",variables[0],"| WITH |",variables[1],"| ON {"+targetVariable+"}");
+			var command ={operator:result, var1:variables[0].replace(/\s+/g, ''), var2:variables[1].replace(/\s+/g, ''), target:targetVariable.replace(/\s+/g, '')};
 			commandStack.push(command);
 		})
 
 	}, this);
+	console.log(commandStack);
 	done(commandStack);
-	return commandStack;
 }
 
 
