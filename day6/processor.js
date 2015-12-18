@@ -7,7 +7,7 @@ var commandParser = require('./commandParser');
 // Read the file and print its contents.
 var fs = require('fs'),
     filename = process.argv[2];
-	
+
 //make grid
 var iMax = 1000;
 var jMax = 1000;
@@ -18,26 +18,26 @@ for (i = 0; i < iMax; i++) {
 	for (j = 0; j < jMax; j++) {
 		grid[i][j] = { "x": i, "y": j, "status": 0 };
 	}
-}	
-	
-	
+}
+
+
 fs.readFile(filename, 'utf8', function (err, data) {
     if (err) throw err;
 commandParser(data, function(commandStack){
 	commandStack.forEach(function(element) {
-		changeLights(grid, element.firstPos, element.seccondPos, element.commandMode, function(){
+		changeLights(grid, element.firstPos, element.secondPos, element.commandMode, function(){
 		});
 	}, this);
-	
+
 })
 countLightsThatAreOn(grid);
 });
 
-function changeLights(grid, firstPos, seccondPos, commandMode ,done) {
+function changeLights(grid, firstPos, secondPos, commandMode ,done) {
 	grid.forEach(function (position) {
-		if(between(position[0].x ,firstPos.x, seccondPos.x)){
+		if(between(position[0].x ,firstPos.x, secondPos.x)){
 			position.forEach(function (innerPosition) {
-				if (between(innerPosition.y, firstPos.y, seccondPos.y)) {
+				if (between(innerPosition.y, firstPos.y, secondPos.y)) {
 					switch (commandMode) {
 						case "on":
 							innerPosition.status = innerPosition.status+1
@@ -49,7 +49,7 @@ function changeLights(grid, firstPos, seccondPos, commandMode ,done) {
 						case "toggle":
 							innerPosition.status = innerPosition.status+2
 							break;
-					
+
 						default:
 							break;
 					}

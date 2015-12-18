@@ -7,8 +7,8 @@ module.exports = function (data, done) {
 		var commandWord = findCommand(element);
 		var numbers = findNumbers(element);
 		var firstPos = numbers[0].split(",");
-		var seccondPos = numbers[1].split(",");
-		commandStack.push({ firstPos: { x: firstPos[0], y: firstPos[1] }, seccondPos: { x: seccondPos[0], y: seccondPos[1] }, commandMode: commandWord })
+		var secondPos = numbers[1].split(",");
+		commandStack.push({ firstPos: { x: firstPos[0], y: firstPos[1] }, secondPos: { x: secondPos[0], y: secondPos[1] }, commandMode: commandWord })
 	}, this);
 	console.log(commandStack)
 	done(commandStack);
